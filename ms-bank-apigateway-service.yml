@@ -10,21 +10,21 @@ spring:
       default-filters:
       - name: SCGWGlobalFilter
       routes:
-        - id: ms-bank-product
+        - id: ms-bank-product-service
           uri: http://ms-bank-product-service:8080/
           predicates:
             - Path=/product/**
           filters:
           - name: SCGWPreFilter
           - name: SCGWPostFilter
-        - id: ms-bank-product-rule
+        - id: ms-bank-product-rule-service
           uri: http://ms-bank-product-rule-service:8081/
           predicates:
             - Path=/productRule/**
           filters:
           - name: SCGWPreFilter
           - name: SCGWPostFilter
-        - id: ms-bank-account
+        - id: ms-bank-account-service
           uri: http://ms-bank-account-service:8082/
           predicates:
             - Path=/account/**
