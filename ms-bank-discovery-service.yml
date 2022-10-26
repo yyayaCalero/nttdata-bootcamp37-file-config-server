@@ -16,5 +16,3 @@ logging:
   level:
     '[com.netflix.eureka]': 'OFF'
     '[com.netflix.discovery]': 'OFF'
-
-client.propiedad: hola
