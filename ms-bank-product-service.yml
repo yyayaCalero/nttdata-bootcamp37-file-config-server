@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: ms-bank-product-service
+  config:
+    import: optional:configserver:http://ms-bank-config-server:8888
   data: 
     mongodb:
      host: mongo
