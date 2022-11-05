@@ -1,0 +1,17 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: ms-bank-discovery-service
+  config:
+    import: optional:configserver:http://config-server:8888
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+logging:
+  level:
+    '[com.netflix.eureka]': 'OFF'
+    '[com.netflix.discovery]': 'OFF'

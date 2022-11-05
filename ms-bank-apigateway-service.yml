@@ -1,0 +1,70 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: ms-bank-apigateway-service
+  config:
+    import: optional:configserver:http://config-server:8888
+  cloud:
+    gateway:
+      default-filters:
+      - name: SCGWGlobalFilter
+      routes:
+        - id: ms-bank-product-service
+          uri: http://ms-bank-product-service:8080/
+          predicates:
+            - Path=/product/**
+          filters:
+          - name: SCGWPreFilter
+          - name: SCGWPostFilter
+          
+        - id: ms-bank-account-service
+          uri: http://ms-bank-account-service:8081/
+          predicates:
+            - Path=/account/**
+          filters:
+          - name: SCGWPreFilter
+          - name: SCGWPostFilter
+          
+        - id: ms-bank-credit-service
+          uri: http://ms-bank-credit-service:8082/
+          predicates:
+            - Path=/credit/**
+          filters:
+          - name: SCGWPreFilter
+          - name: SCGWPostFilter
+          
+        - id: ms-bank-transaction-service
+          uri: http://ms-bank-transaction-service:8083/
+          predicates:
+            - Path=/transaction/**
+          filters:
+          - name: SCGWPreFilter
+          - name: SCGWPostFilter
+          
+        - id: ms-yanki-account-service
+          uri: http://ms-yanki-account-service:8100/
+          predicates:
+            - Path=/yankiAccount/**
+          filters:
+          - name: SCGWPreFilter
+          - name: SCGWPostFilter
+          
+        - id: ms-yanki-balance-service
+          uri: http://ms-yanki-balance-service:8101/
+          predicates:
+            - Path=/yankiBalance/**
+          filters:
+          - name: SCGWPreFilter
+          - name: SCGWPostFilter
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://ms-bank-discovery-service:8761/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+
+
+  
+
+

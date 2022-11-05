@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: ms-bank-product-service
+  config:
+    import: optional:configserver:http://config-server:8888
+  data: 
+    mongodb:
+     host: mongo
+     port: 27017
+     database: Bank 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://ms-bank-discovery-service:8761/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
